@@ -1,30 +1,31 @@
-import image from "../assets/image/auth.jpg";
+import bottle from "../assets/image/bottle.png";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   return (
-    <div className="max-container justify-center">
-      <div className="flex items-center justify-between mt-10">
-                <div className="w-1/2 mx-auto">
-                    <h2 className="text-5xl">Login</h2>
-                    <p>Welcome Back!</p>
+    <div className="h-screen py-48 auth-background">
+      <img src={bottle} alt="Bottle" className="absolute bottom-0 left-0 z-40 h-screen"/>
+      <div className="auth-container p-10 bg-secondary opacity-80 rounded-lg flex items-center justify-between">
+        
+        <form className="w-2/3 ml-auto pr-10">
+          <h2 className="font-dorsa text-6xl text-primary">Welcome Back!</h2>
+          <div>
+              <label className="block capitalize text-primary">Username</label>
+              <input className="test drop-shadow-lg opacity-90 w-full p-2 rounded-md outline-none" placeholder="Username"/>
+            </div>
+            <div>
+              <label className="block capitalize text-primary">Password</label>
+              <input className="test drop-shadow-lg opacity-90 w-full p-2 rounded-md outline-none" placeholder="Password"/>
+            </div>
 
-                    <form>
-                        <div>
-                            <label className="block uppercase text-sm mt-5">Username</label>
-                            <input placeholder="Username" type="text" className="border border-neutral-400 outline-none p-2 rounded-lg w-full"/>
-                        </div>
 
-                        <div>
-                            <label className="block uppercase text-sm mt-5">Password</label>
-                            <input placeholder="Password" type="password" className="border border-neutral-400 outline-none p-2 rounded-lg w-full"/>
-                        </div>    
+          <p className="mt-3">Don't have an account? <Link to="/register" className="text-accent">Sign Up</Link></p>
+          <button className="hover:bg-darker-accent duration-200 bg-primary w-1/3 text-white-smoke mx-auto rounded-md py-2 mt-3">Sign In</button>
 
-                        <button className="w-full bg-neutral-800 p-2 rounded-lg text-white mt-4">Login</button>
-                    </form>
-                </div>
-                <div>
-                    <img src={image} alt="Wineyard" className="w-1/2 mx-auto"/>
-                </div>
+          
+         
+
+        </form>
       </div>
     </div>
   );

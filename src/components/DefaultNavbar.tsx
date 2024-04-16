@@ -8,7 +8,7 @@ const DefaultNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const handleMenu = () => setIsOpen(!isOpen);
     return (
-        <div className="nav-gradient fixed w-full mx-auto">
+        <div className="nav-gradient fixed w-full mx-auto z-50">
             <div className="max-container flex items-center justify-between  px-5">
 
 

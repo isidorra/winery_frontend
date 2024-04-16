@@ -1,68 +1,78 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dorsa&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.max-container {
+    max-width: 1300px;
+    margin: auto;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* .nav-gradient {
+    background: rgb(57,57,52);
+    background: linear-gradient(90deg, rgba(57,57,52,1) 0%, rgba(159,159,145,1) 100%);
+} */
+
+.nav-gradient {
+    background: rgb(57,57,52);
+    background: linear-gradient(90deg, rgba(57,57,52,1) 0%, rgba(57,57,52,0) 100%);
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.hero-background {
+    background-image: url("./assets/image/hero3.jpg");
+    /* Set background size to cover the entire container */
+    background-size: cover;
+
+    /* Center the background image */
+    background-position: center;
+
+    /* Ensure the background image is not repeated */
+    background-repeat: no-repeat;
+
+    /* Set the height and width of the container */
+    width: 100%; /* Adjust as needed */
+    height: 100vh; /* Adjust as needed */
+  
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+
+.no-letter-spacing {
+    letter-spacing: 0;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+@media (min-width: 200px) {
+    .hero-heading {
+        font-size: 50px;
+        letter-spacing: 30px;
+    }
+    
+    .hero-subheading {
+        letter-spacing: 20px;
+    }
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+@media (min-width: 400px) {
+    .hero-heading {
+        font-size: 100px;
+        letter-spacing: 50px;
+    }
+    
+    .hero-subheading {
+        letter-spacing: 40px;
+        
+    }
+    
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+
+@media (min-width: 768px) {
+    .hero-heading {
+        font-size: 270px;
+        letter-spacing: 90px;
+    }
+
+    .hero-subheading {
+        letter-spacing: 60px;
+    }
 }
+

@@ -1,12 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import logo from "../assets/icons/logo.png";
 import menu from "../assets/icons/menu.png";
 import exit from "../assets/icons/exit.png";
 import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 
 const DefaultNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const handleMenu = () => setIsOpen(!isOpen);
+    const {auth} = useAuth();
+    const username = auth?.usernameDecoded;
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        <Navigate to={"/login"}/>
+    }
     return (
         <div className="nav-gradient fixed w-full mx-auto z-50">
             <div className="max-container flex items-center justify-between  px-5">
@@ -26,9 +33,22 @@ const DefaultNavbar = () => {
                     </div>
                 </div>
 
-                <Link to={"/register"} className="bg-secondary text-primary px-4 py-2 rounded-sm hover:bg-primary hover:text-white-smoke duration-200 hidden md:block">
-                    Sign Up
-                </Link>
+                {username &&  
+                (
+                    <>
+                        <Link to={"/profile"}>
+                            {auth.usernameDecoded} {/* Assuming you want to display the username */}
+                        </Link>
+                        <button onClick={handleLogout}>Logout</button> 
+                    </>
+                )}
+                {!username && (
+                    <Link to={"/register"} className="bg-secondary text-primary px-4 py-2 rounded-sm hover:bg-primary hover:text-white-smoke duration-200 hidden md:block">
+                        Sign Up
+                    </Link>
+
+                )}
+                    
 
                 {isOpen ? <img onClick={handleMenu} src={exit} alt="Close" className="block md:hidden w-8 opacity-70"/> : <img onClick={handleMenu} src={menu} alt="Menu" className="block md:hidden w-8 opacity-70"/>}
                 

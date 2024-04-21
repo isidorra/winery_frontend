@@ -1,19 +1,28 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, redirect } from "react-router-dom";
 import logo from "../assets/icons/logo.png";
 import menu from "../assets/icons/menu.png";
 import exit from "../assets/icons/exit.png";
 import { useState } from "react";
-import useAuth from "../hooks/useAuth";
+import useStateContext, { stateContext } from "../hooks/useStateContext";
+import LoginPage from "../pages/LoginPage";
 
 const DefaultNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const {resetContext, context, setContext} = useStateContext(stateContext);
+    const [redirect, setRedirect] = useState(false);
+
+
     const handleMenu = () => setIsOpen(!isOpen);
-    const {auth} = useAuth();
-    const username = auth?.usernameDecoded;
+
     const handleLogout = () => {
-        localStorage.removeItem("token");
-        <Navigate to={"/login"}/>
-    }
+        resetContext(); 
+        setRedirect(true);
+
+      }
+    
+    if(redirect)
+      return <Navigate to={"/"}/>
+
     return (
         <div className="nav-gradient fixed w-full mx-auto z-50">
             <div className="max-container flex items-center justify-between  px-5">
@@ -33,21 +42,16 @@ const DefaultNavbar = () => {
                     </div>
                 </div>
 
-                {username &&  
-                (
-                    <>
-                        <Link to={"/profile"}>
-                            {auth.usernameDecoded} {/* Assuming you want to display the username */}
-                        </Link>
-                        <button onClick={handleLogout}>Logout</button> 
-                    </>
-                )}
-                {!username && (
+               {context.username != "" ?
+                <button onClick={handleLogout}>Logout</button> 
+                :
                     <Link to={"/register"} className="bg-secondary text-primary px-4 py-2 rounded-sm hover:bg-primary hover:text-white-smoke duration-200 hidden md:block">
                         Sign Up
                     </Link>
+               }
+               
+                
 
-                )}
                     
 
                 {isOpen ? <img onClick={handleMenu} src={exit} alt="Close" className="block md:hidden w-8 opacity-70"/> : <img onClick={handleMenu} src={menu} alt="Menu" className="block md:hidden w-8 opacity-70"/>}

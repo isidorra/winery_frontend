@@ -60,7 +60,7 @@ const ProfilePage = () => {
           door, 
           cityId, 
           zip, 
-                });
+        });
         console.log(response);
       }
 

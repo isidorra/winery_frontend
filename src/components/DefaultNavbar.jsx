@@ -39,6 +39,7 @@ const DefaultNavbar = () => {
                         <Link to={""} className="hover:font-light duration-200">Tours</Link>
                         <Link to={""} className="hover:font-light duration-200">Wineyards</Link>
                         <Link to={""} className="hover:font-light duration-200">Contact</Link>
+                        {context.role == "0" && <Link to={"/administrator"} className="hover:font-light duration-200">Users</Link>}
                     </div>
                 </div>
 

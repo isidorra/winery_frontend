@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage"
 import RegisterPage from "./pages/RegisterPage"
 import Authenticate from "./pages/Authenticate"
 import ProfilePage from "./pages/ProfilePage"
+import AdministratorPage from "./pages/AdministratorPage"
 
 
 
@@ -20,7 +21,7 @@ function App() {
             <Route path="/login" element={<LoginPage/>}/>
             <Route path="/register" element={<RegisterPage/>}/>
             <Route path="/profile" element={<ProfilePage/>}/>
-            
+            <Route path="/administrator" element={<AdministratorPage/>}/>
             
           </Route> 
         </Routes>

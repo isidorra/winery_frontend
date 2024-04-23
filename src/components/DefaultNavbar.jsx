@@ -33,7 +33,7 @@ const DefaultNavbar = () => {
                         <img src={logo} alt="Logo" className="w-14 md:w-20"/>
                     </Link>
 
-                    <div className="hidden md:flex capitalize text-white-smoke text-lg font-thin tracking-widest items-center gap-5">
+                    <div className="hidden md:flex capitalize text-secondary text-lg font-thin tracking-widest items-center gap-5">
                         <Link to={""} className="hover:font-light duration-200">About us</Link>
                         <Link to={""} className="hover:font-light duration-200">Our Wines</Link>
                         <Link to={""} className="hover:font-light duration-200">Tours</Link>
@@ -59,7 +59,7 @@ const DefaultNavbar = () => {
                 
             </div>
             {isOpen &&
-                        <div className="bg-darker-accent w-full mx-auto uppercase md:hidden p-10 text-center drop-shadow-xl opacity-90">
+                        <div className="bg-primary w-full mx-auto uppercase md:hidden p-10 text-center drop-shadow-xl opacity-90">
                             <Link to={""} className="hover:font-light text-secondary block duration-200 mb-2">About us</Link>
                             <Link to={""} className="hover:font-light text-secondary block duration-200 mb-2">Our Wines</Link>
                             <Link to={""} className="hover:font-light text-secondary block duration-200 mb-2">Tours</Link>

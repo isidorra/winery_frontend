@@ -11,9 +11,9 @@ export default {
           "dorsa" : ["Dorsa", "sans-serif"],
       },
       colors: {
-        "primary" : "#393934",
+        "primary" : "#0E2332",
         "secondary" : "#fff9d4",
-        "accent" : "#72383d",
+        "accent" : "#b46168",
         "darker-accent" : "#301618",
         "white-smoke" : "#f3f3f3"
       },

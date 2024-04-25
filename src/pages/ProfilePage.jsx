@@ -76,6 +76,7 @@ const ProfilePage = () => {
           city,
         });
         console.log(response);
+     
       }
 
     } catch (e) {
@@ -122,7 +123,7 @@ const ProfilePage = () => {
            
             <div>
                     <div className="w-3/4 flex items-center justify-around gap-10 nav-gradient drop-shadow-lg rounded-md p-10 mx-auto">
-                        <img src={user.role === 9 ? userIcon : user.profilePhoto} className="w-40 rounded-md"/>
+                        <img src={user.role === 9 ? userIcon : user.profilePhoto} className="w-60 h-auto rounded-md"/>
                         <div className="text-white-smoke">
                           <h3 className="text-6xl font-dorsa text-secondary">Personal Info</h3>
                           <p>{user.firstname} {user.lastname}</p>

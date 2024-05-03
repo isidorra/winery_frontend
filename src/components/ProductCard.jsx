@@ -20,7 +20,7 @@ const ProductCard = ({product}) => {
     getPrice();
   }, [])
   return (
-    <div className="bg-primary white-shadow w-1/3">
+    <div className="test2 white-shadow hover:drop-shadow-[1px_1px_10px_#58574a] duration-300">
         <img src={"src/assets/products/" + product.photo} alt={product.name} className="h-96 mx-auto"/>
         <div className="flex items-center justify-between p-5">
             <h3 className="text-white-smoke text-xl font-thin">{product.name}</h3>
@@ -32,7 +32,7 @@ const ProductCard = ({product}) => {
                 <input type="number" className="w-1/4 p-2 outline-none rounded-md" min={1} max={product.quantity}/>
                 <button className="w-full bg-secondary rounded-md p-2 uppercase">Add To Cart</button>
             </form> }
-            <Link to={"/products/" + product.id} className="w-full block text-center border border-secondary rounded-md p-2 text-secondary">
+            <Link to={"/products/" + product.id} className="uppercase w-full block text-center border border-secondary rounded-md p-2 text-secondary">
                 See More
             </Link>
         </div>

@@ -2,11 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import ProductCard from "../components/ProductCard";
 import searchIcon from "../assets/icons/search.png";
+import close from "../assets/icons/red-exit.png";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [keyword, setKeyword] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(0);
 
   const getProducts = async () => {
     try {
@@ -30,22 +32,30 @@ const ProductsPage = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5257/api/products/search", JSON.stringify(keyword), {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+      const response = await axios.get("http://localhost:5257/api/products/search?keyword=" + keyword);
       setProducts(response.data);
     } catch(error) {
       console.log(error);
     }
   }
-  
+
+  const getProductsByCategory = async() => {
+    try {
+        const response = await axios.get("http://localhost:5257/api/products/category?categoryId=" + selectedCategory);
+        setProducts(response.data);
+    } catch (error) {
+        console.log(error);
+    }
+  }
 
   useEffect(() => {
-    getProducts();
     getCategories();
-  }, [])
+
+    if(selectedCategory == 0)
+        getProducts();
+    else 
+        getProductsByCategory();
+  }, [selectedCategory])
 
   return (
     <div className="bg-primary py-16">
@@ -57,22 +67,31 @@ const ProductsPage = () => {
                     <p className="uppercase font-thin text-lg text-white-smoke opacity-80">Filter By</p>
                     {categories.map((category, index) => 
                     <div key={index}>
-                        <button className="border border-neutral-600 py-1 px-4 text-white-smoke rounded-md">
+                        <button onClick={() => setSelectedCategory(category.id)} className={`border border-neutral-600 py-1 px-4  rounded-md ${selectedCategory === category.id ? "bg-secondary text-primary" : 'text-white-smoke'}`}>
                             {category.name}
                         </button>
                     </div>)}
+                    {selectedCategory != 0 &&
+                        <button onClick={() => setSelectedCategory(0)} className="flex items-center gap-1 text-accent ">
+                            <img src={close} alt="Remove" className="w-3"/>
+                            Remove
+                        </button>
+                    }
                 </div>
 
                 <div>
-                    <form onSubmit={handleSearch} className="bg-white-smoke flex items-center gap-2 pl-4 pr-2 py-1 rounded-md">
-                        <img src={searchIcon} alt="Search" className="w-3"/>
-                        <input value={keyword} onChange={e => setKeyword(e.target.value)} className="bg-white-smoke outline-none"/>
-                        <button className="bg-primary text-secondary rounded-md py-1 px-2">Search</button>
+                    <form onSubmit={handleSearch} className="bg-primary border text-white-smoke border-neutral-600 flex items-center gap-2 pl-4 pr-2 py-1 rounded-md">
+                        
+                        <input value={keyword} onChange={e => setKeyword(e.target.value)} className="bg-primary outline-none"/>
+                        <button className="bg-primary text-secondary rounded-md py-1 px-2 flex items-center gap-2 font-light">
+                            <img src={searchIcon} alt="Search" className="w-3"/>
+                            Search
+                        </button>
                     </form>
                 </div>
             </div>
 
-            <div className="flex items-start gap-5 justify-between mt-10">
+            <div className="grid grid-cols-3 gap-10 mt-10">
                 {products.map((product, index) => 
                     <ProductCard key={index}
                                 //  id={product.id}

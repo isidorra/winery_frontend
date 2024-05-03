@@ -58,7 +58,7 @@ const ProductDetailsPage = () => {
 
             <div className="flex items-center justify-between">
               <p className="text-lg font-thin text-white-smoke opacity-80"><span className="font-normal">Category:</span> {category.name}</p>
-              <p className="font-dorsa text-4xl text-secondary">${price.price}</p>
+              <p className="font-dorsa text-4xl text-secondary tracking-[.05em]">${price.price}</p>
             </div>
 
             <p className="text-white-smoke text-lg font-thin opacity-80 mt-5 text-justify border-b border-neutral-500 pb-10">

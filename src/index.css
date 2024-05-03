@@ -38,12 +38,19 @@
 .test {
     color: #b46168;
 }
+.test2 {
+    background-color: #091f32;
+}
 
 .no-letter-spacing {
     letter-spacing: 0;
 }
 .white-shadow {
     filter: drop-shadow(5px 5px 10px #ffffff0a);
+}
+
+.yellow-shadow {
+    filter: drop-shadow(5px 5px 10px #fff9d3);
 }
 @media (min-width: 200px) {
     .hero-heading {

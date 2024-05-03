@@ -6,6 +6,8 @@ import RegisterPage from "./pages/RegisterPage"
 import Authenticate from "./pages/Authenticate"
 import ProfilePage from "./pages/ProfilePage"
 import AdministratorPage from "./pages/AdministratorPage"
+import ProductsPage from "./pages/ProductsPage"
+import ProductDetailsPage from "./pages/ProductDetailsPage"
 
 
 
@@ -22,6 +24,9 @@ function App() {
             <Route path="/register" element={<RegisterPage/>}/>
             <Route path="/profile" element={<ProfilePage/>}/>
             <Route path="/administrator" element={<AdministratorPage/>}/>
+
+            <Route path="/products" element={<ProductsPage/>}/>
+            <Route path="/products/:id" element={<ProductDetailsPage/>}/>
             
           </Route> 
         </Routes>

@@ -39,7 +39,7 @@ const DefaultNavbar = () => {
                     <div className="hidden md:flex capitalize text-secondary text-lg font-thin tracking-widest items-center gap-5">
                         {context.role == "0" && <Link to={"/administrator"} className="hover:font-light duration-200">Employees<span className="pl-5 opacity-70">|</span></Link>}
                         <Link to={""} className="hover:font-light duration-200">About us</Link>
-                        <Link to={""} className="hover:font-light duration-200">Our Wines</Link>
+                        <Link to={"/products"} className="hover:font-light duration-200">Our Wines</Link>
                         <Link to={""} className="hover:font-light duration-200">Tours</Link>
                         <Link to={""} className="hover:font-light duration-200">Wineyards</Link>
                         <Link to={""} className="hover:font-light duration-200">Contact</Link>
@@ -76,7 +76,7 @@ const DefaultNavbar = () => {
             {isOpen &&
                         <div className="bg-primary w-full mx-auto uppercase md:hidden p-10 text-center drop-shadow-xl opacity-90">
                             <Link to={""} className="hover:font-light text-secondary block duration-200 mb-2">About us</Link>
-                            <Link to={""} className="hover:font-light text-secondary block duration-200 mb-2">Our Wines</Link>
+                            <Link to={"/products"} className="hover:font-light text-secondary block duration-200 mb-2">Our Wines</Link>
                             <Link to={""} className="hover:font-light text-secondary block duration-200 mb-2">Tours</Link>
                             <Link to={""} className="hover:font-light text-secondary block duration-200 mb-2">Wineyards</Link>
                             <Link to={""} className="hover:font-light text-secondary block duration-200 mb-5">Contact</Link>

@@ -1,9 +1,9 @@
 import { Navigate } from "react-router-dom";
-import useStateContext, { stateContext } from "../hooks/useStateContext"
+import useStateContext, { stateContext } from "../../hooks/useStateContext"
 import LoginPage from "./LoginPage";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import userIcon from "../assets/icons/user.png";
+import userIcon from "../../assets/icons/user.png";
 
 const ProfilePage = () => {
   const {context} = useStateContext(stateContext);

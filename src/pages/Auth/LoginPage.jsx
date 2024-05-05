@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import useStateContext from "../hooks/useStateContext";
+import useStateContext from "../../hooks/useStateContext";
 import { Link, Navigate } from "react-router-dom";
 import ProfilePage from "./ProfilePage";
 import * as Yup from "yup";

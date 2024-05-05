@@ -5,7 +5,7 @@ import exit from "../assets/icons/exit.png";
 import userIcon from "../assets/icons/user.png";
 import { useState } from "react";
 import useStateContext, { stateContext } from "../hooks/useStateContext";
-import LoginPage from "../pages/LoginPage";
+import LoginPage from "../pages/Auth/LoginPage";
 
 const DefaultNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +38,8 @@ const DefaultNavbar = () => {
 
                     <div className="hidden md:flex capitalize text-secondary text-lg font-thin tracking-widest items-center gap-5">
                         {context.role == "0" && <Link to={"/administrator"} className="hover:font-light duration-200">Employees<span className="pl-5 opacity-70">|</span></Link>}
+                        {context.role == "1" && <Link to={"/sales-products"} className="hover:font-light duration-200">Products<span className="pl-5 opacity-70">|</span></Link>}
+                        {context.role == "1" && <Link to={"/sales-analytics"} className="hover:font-light duration-200">Analytics<span className="pl-5 opacity-70">|</span></Link>}
                         <Link to={""} className="hover:font-light duration-200">About us</Link>
                         <Link to={"/products"} className="hover:font-light duration-200">Our Wines</Link>
                         <Link to={""} className="hover:font-light duration-200">Tours</Link>

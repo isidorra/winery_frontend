@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import useStateContext, { stateContext } from "../hooks/useStateContext"
+import useStateContext, { stateContext } from "../../hooks/useStateContext"
 import axios from "axios";
-import { roleMapping } from "../helpers/roleMapping";
+import { roleMapping } from "../../helpers/roleMapping";
 import * as Yup from "yup";
 
 

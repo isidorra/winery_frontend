@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
-import ProductCard from "../components/ProductCard";
-import searchIcon from "../assets/icons/search.png";
-import close from "../assets/icons/red-exit.png";
+import searchIcon from "../../assets/icons/search.png";
+import close from "../../assets/icons/red-exit.png";
+import ProductCard from "../../components/ProductCard"
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -12,7 +12,7 @@ const ProductsPage = () => {
 
   const getProducts = async () => {
     try {
-        const response = await axios.get("http://localhost:5257/api/products");
+        const response = await axios.get("http://localhost:5257/api/products/approved");
         setProducts(response.data);
         console.log(response.data);
     } catch(error) {
@@ -32,7 +32,7 @@ const ProductsPage = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get("http://localhost:5257/api/products/search?keyword=" + keyword);
+      const response = await axios.get("http://localhost:5257/api/products/approved-search?keyword=" + keyword);
       setProducts(response.data);
     } catch(error) {
       console.log(error);
@@ -41,7 +41,7 @@ const ProductsPage = () => {
 
   const getProductsByCategory = async() => {
     try {
-        const response = await axios.get("http://localhost:5257/api/products/category?categoryId=" + selectedCategory);
+        const response = await axios.get("http://localhost:5257/api/products/approved-category?categoryId=" + selectedCategory);
         setProducts(response.data);
     } catch (error) {
         console.log(error);

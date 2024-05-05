@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import useStateContext, { stateContext } from "../hooks/useStateContext";
+import useStateContext, { stateContext } from "../../hooks/useStateContext";
 import ProfilePage from "./ProfilePage";
 import LoginPage from "./LoginPage";
 

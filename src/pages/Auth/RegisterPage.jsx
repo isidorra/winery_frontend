@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import useStateContext from "../hooks/useStateContext";
+import useStateContext from "../../hooks/useStateContext";
 import { Navigate } from "react-router-dom";
 import * as Yup from "yup";
 

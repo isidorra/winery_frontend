@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useStateContext, { stateContext } from "../hooks/useStateContext";
+import useStateContext, { stateContext } from "../../hooks/useStateContext";
 
 const ProductDetailsPage = () => {
   let {id} = useParams();
@@ -12,7 +12,7 @@ const ProductDetailsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5257/api/products/details?id=${id}`);
+        const response = await axios.get(`http://localhost:5257/api/products/approved-details?id=${id}`);
         setProduct(response.data);
         
         // Only fetch price and category if product exists

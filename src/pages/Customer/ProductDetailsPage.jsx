@@ -8,7 +8,10 @@ const ProductDetailsPage = () => {
   const [product, setProduct] = useState(null);
   const [price, setPrice] = useState(0);
   const [category, setCategory] = useState({});
+  const [discount, setDiscount] = useState(null);
+
   const {context} = useStateContext(stateContext);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -19,7 +22,12 @@ const ProductDetailsPage = () => {
         if (response.data) {
           getPrice(response.data.pricingId);
           getCategory(response.data.productCategoryId);
+          
+          console.log(price.discountId);
         }
+        console.log(price.discountId);
+        getDiscount(price.discountId);
+        console.log(price.discountId);
       } catch (error) {
         console.log(error);
       }
@@ -36,6 +44,15 @@ const ProductDetailsPage = () => {
       console.log(error);
     }
   };
+
+  const getDiscount = async(discountId) => {
+    try {
+      const response = await axios.get(`http://localhost:5257/api/discounts/details?id=${discountId}`);
+      setDiscount(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   const getCategory = async (categoryId) => {
     try {
@@ -58,7 +75,21 @@ const ProductDetailsPage = () => {
 
             <div className="flex items-center justify-between">
               <p className="text-lg font-thin text-white-smoke opacity-80"><span className="font-normal">Category:</span> {category.name}</p>
-              <p className="font-dorsa text-4xl text-secondary tracking-[.05em]">${price.price}</p>
+
+              <div className="">
+                
+                {discount != null ? 
+                  <div className="flex items-center gap-1">
+                    <p className="text-xl text-accent tracking-[.05em] line-through">${price.price}</p>
+                    <p className="text-secondary text-3xl">${(price.price * (1 - discount.percentage / 100)).toFixed(2)}</p>
+                  </div>
+                  :
+
+                  <p className="text-3xl text-secondary tracking-[.05em]">${price.price}</p>
+              
+                }
+              </div>
+              
             </div>
 
             <p className="text-white-smoke text-lg font-thin opacity-80 mt-5 text-justify border-b border-neutral-500 pb-10">

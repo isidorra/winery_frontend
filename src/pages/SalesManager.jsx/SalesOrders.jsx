@@ -32,7 +32,7 @@ const SalesOrders = () => {
                         <th className="border border-neutral-300 bg-primary text-secondary font-normal p-2">Total</th>
                         <th className="border border-neutral-300 bg-primary text-secondary font-normal p-2">Created At</th>
                         <th className="border border-neutral-300 bg-primary text-secondary font-normal p-2">Status</th>
-                        <td className="border border-neutral-300 bg-primary text-secondary font-normal p-2">Receipt</td>
+                        <td className="border border-neutral-300 bg-primary text-secondary font-normal p-2">Invoice</td>
                     </tr>
                 </thead>
 

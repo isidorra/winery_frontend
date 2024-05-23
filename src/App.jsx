@@ -10,6 +10,9 @@ import ProductsPage from "./pages/Customer/ProductsPage"
 import ProductDetailsPage from "./pages/Customer/ProductDetailsPage"
 import SalesProducts from "./pages/SalesManager.jsx/SalesProducts"
 import SalesAnalytics from "./pages/SalesManager.jsx/SalesAnalytics"
+import ProductionSchedule from "./pages/Owner/ProductionSchedule"
+import CreateFermentation from "./pages/Owner/CreateFermentation"
+
 
 
 
@@ -36,6 +39,10 @@ function App() {
             {/* SalesManager */}
             <Route path="/sales-products" element={<SalesProducts/>}/>
             <Route path="/sales-analytics" element={<SalesAnalytics/>}/>
+
+            {/* Owner */}
+            <Route path="/production" element={<ProductionSchedule/>}/>
+            <Route path="/create-fermentation" element={<CreateFermentation/>}/>
 
             
           </Route> 

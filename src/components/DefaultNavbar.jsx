@@ -40,6 +40,7 @@ const DefaultNavbar = () => {
                         {context.role == "0" && <Link to={"/administrator"} className="hover:font-light duration-200">Employees<span className="pl-5 opacity-70">|</span></Link>}
                         {context.role == "1" && <Link to={"/sales-products"} className="hover:font-light duration-200">Products<span className="pl-5 opacity-70">|</span></Link>}
                         {context.role == "1" && <Link to={"/sales-analytics"} className="hover:font-light duration-200">Analytics<span className="pl-5 opacity-70">|</span></Link>}
+                        {context.role == "5" && <Link to={"/production"} className="hover:font-light duration-200">Production<span className="pl-5 opacity-70">|</span></Link>}
                         <Link to={""} className="hover:font-light duration-200">About us</Link>
                         <Link to={"/products"} className="hover:font-light duration-200">Our Wines</Link>
                         <Link to={""} className="hover:font-light duration-200">Tours</Link>

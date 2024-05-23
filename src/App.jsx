@@ -10,6 +10,10 @@ import ProductsPage from "./pages/Customer/ProductsPage"
 import ProductDetailsPage from "./pages/Customer/ProductDetailsPage"
 import SalesProducts from "./pages/SalesManager.jsx/SalesProducts"
 import SalesAnalytics from "./pages/SalesManager.jsx/SalesAnalytics"
+import CartPage from "./pages/Customer/CartPage"
+import Checkout from "./pages/Customer/Checkout"
+import CustomerOrders from "./pages/Customer/CustomerOrders"
+import SalesOrders from "./pages/SalesManager.jsx/SalesOrders"
 
 
 
@@ -32,9 +36,14 @@ function App() {
             {/* Customer */}
             <Route path="/products" element={<ProductsPage/>}/>
             <Route path="/products/:id" element={<ProductDetailsPage/>}/>
+            <Route path="/cart" element={<CartPage/>}/>
+            <Route path="/checkout" element={<Checkout/>}/>
+            <Route path="/customer-orders" element={<CustomerOrders/>}/>
+            
 
             {/* SalesManager */}
             <Route path="/sales-products" element={<SalesProducts/>}/>
+            <Route path="/sales-orders" element={<SalesOrders/>}/>
             <Route path="/sales-analytics" element={<SalesAnalytics/>}/>
 
             

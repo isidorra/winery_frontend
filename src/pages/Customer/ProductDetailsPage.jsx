@@ -65,6 +65,7 @@ const ProductDetailsPage = () => {
   
 
   if (!product) return <p>Loading...</p>;
+  
   return (
     <div className="bg-primary pt-16">
       <div className="max-container p-10">

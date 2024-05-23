@@ -6,6 +6,9 @@ import useStateContext, { stateContext } from '../hooks/useStateContext';
 const ProductCard = ({ product }) => {
   const [price, setPrice] = useState(0);
   const [discount, setDiscount] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const [cartId, setCartId] = useState();
+  const productId = product.id;
   const { context } = useStateContext(stateContext);
   
   const getPrice = async () => {
@@ -33,9 +36,33 @@ const ProductCard = ({ product }) => {
     }
     return price.price.toFixed(2);
   }
+  const getCartId = async() => {
+    try {
+        const response = await axios.get("http://localhost:5257/api/cart/customer-username?username=" + context.username);
+        setCartId(response.data.id);
+        console.log(cartId);
+    } catch(error) {
+        console.log(error);
+    }
+  }
+
+  const handleAddToCart = async(ev) => {
+    ev.preventDefault();
+    if(cartId) {
+      try {
+        console.log(cartId, productId, quantity);
+        const response = await axios.post("http://localhost:5257/api/cart-product",{cartId, productId, quantity});
+        console.log(response);
+      } catch(error) {
+        console.log(error);
+      }
+    }
+    
+  }
   
   useEffect(() => {
     getPrice();
+    getCartId();
   }, []);
 
   useEffect(() => {
@@ -61,9 +88,9 @@ const ProductCard = ({ product }) => {
         }
       </div>
       <div className="px-5 pb-5">
-        {(context.username !== "" && context.role === "9") &&
-          <form className="flex items-center gap-2 mb-2">
-            <input type="number" className="w-1/4 p-2 outline-none rounded-md" min={1} max={product.quantity}/>
+        {(context.username !== "" && context.role == "9") &&
+          <form onSubmit={handleAddToCart} className="flex items-center gap-2 mb-2">
+            <input value={quantity} onChange={ev => setQuantity(ev.target.value)} type="number" className="w-1/4 p-2 outline-none rounded-md" min={1} max={product.quantity}/>
             <button className="w-full bg-secondary rounded-md p-2 uppercase">Add To Cart</button>
           </form>
         }

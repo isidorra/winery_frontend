@@ -6,6 +6,7 @@ import userIcon from "../assets/icons/user.png";
 import { useState } from "react";
 import useStateContext, { stateContext } from "../hooks/useStateContext";
 import LoginPage from "../pages/Auth/LoginPage";
+import cart from "../assets/icons/shopping-cart.png";
 
 const DefaultNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -39,6 +40,7 @@ const DefaultNavbar = () => {
                     <div className="hidden md:flex capitalize text-secondary text-lg font-thin tracking-widest items-center gap-5">
                         {context.role == "0" && <Link to={"/administrator"} className="hover:font-light duration-200">Employees<span className="pl-5 opacity-70">|</span></Link>}
                         {context.role == "1" && <Link to={"/sales-products"} className="hover:font-light duration-200">Products<span className="pl-5 opacity-70">|</span></Link>}
+                        {context.role == "1" && <Link to={"/sales-orders"} className="hover:font-light duration-200">Orders<span className="pl-5 opacity-70">|</span></Link>}
                         {context.role == "1" && <Link to={"/sales-analytics"} className="hover:font-light duration-200">Analytics<span className="pl-5 opacity-70">|</span></Link>}
                         <Link to={""} className="hover:font-light duration-200">About us</Link>
                         <Link to={"/products"} className="hover:font-light duration-200">Our Wines</Link>
@@ -48,19 +50,42 @@ const DefaultNavbar = () => {
                     </div>
                 </div>
 
-               {context.username != "" ?
-               <div className="border border-neutral-100 p-2 rounded-md">
-                    <div onClick={handleUserTab} className="flex items-center gap-2 hover:cursor-pointer">
-                        <img src={userIcon} className="w-6"/>
-                        <p className="text-white-smoke opacity-80">{context.username}</p>
-                    </div>
-                    {isProfileTabOpen && <>
-                        <hr className="my-2"/>
-                        <Link to={"/profile"} className="block text-white-smoke">Profile</Link>
-                        <button onClick={handleLogout} className="text-white-smoke opacity-80">Logout</button>
-                    </>}
-                    
+
+
+               {(context.username != "" && context.role == "9")  ?
+               <div className="flex items-center gap-5">
+                <Link to="/cart">
+                    <img src={cart} className="w-7"/>
+                </Link>
+                <div className="border border-neutral-100 p-2 rounded-md">
+                        <div onClick={handleUserTab} className="flex items-center gap-2 hover:cursor-pointer">
+                            <img src={userIcon} className="w-6"/>
+                            <p className="text-white-smoke opacity-80">{context.username}</p>
+                        </div>
+                        {isProfileTabOpen && <>
+                            <hr className="my-2"/>
+                            <Link to={"/profile"} className="block text-white-smoke">Profile</Link>
+                            <Link to={"/customer-orders"} className="block text-white-smoke">Orders</Link>
+                            <button onClick={handleLogout} className="text-white-smoke opacity-80">Logout</button>
+                        </>}
+                        
+                </div> 
                </div>
+
+               : context.username != "" ? 
+
+                <div className="border border-neutral-100 p-2 rounded-md">
+                            <div onClick={handleUserTab} className="flex items-center gap-2 hover:cursor-pointer">
+                                <img src={userIcon} className="w-6"/>
+                                <p className="text-white-smoke opacity-80">{context.username}</p>
+                            </div>
+                            {isProfileTabOpen && <>
+                                <hr className="my-2"/>
+                                <Link to={"/profile"} className="block text-white-smoke">Profile</Link>
+                                <button onClick={handleLogout} className="text-white-smoke opacity-80">Logout</button>
+                            </>}
+                            
+                    </div> 
                  
                 :
                     <Link to={"/register"} className="bg-secondary text-primary px-4 py-2 rounded-sm hover:bg-primary hover:text-white-smoke duration-200 hidden md:block">

@@ -1,6 +1,15 @@
 import React from 'react'
 import {orderStatusMapping} from "../helpers/orderStatusMapping";
+import axios from 'axios';
 const SalesOrder = ({order}) => {
+    const generatePdfInvoice = async() => {
+        try {
+            const response = await axios.get("http://localhost:5257/api/purchase/invoice-pdf?purchaseId=" + order.id);
+            console.log(response.data);
+        } catch(error) {
+            console.log(error);
+        }
+    }
   return (
     <tr>
         <td className="border border-neutral-300 p-2">{order.id}</td>
@@ -24,7 +33,9 @@ const SalesOrder = ({order}) => {
         }
         
         <td className="border border-neutral-300 p-2 text-center">
-            <button className="bg-white-smoke rounded-md py-2 px-4 border-[0.5px] border-primary mx-auto">Download PDF</button>
+            <button onClick={generatePdfInvoice} className="bg-white-smoke rounded-md py-2 px-4 border-[0.5px] border-primary mx-auto">
+                Download PDF
+            </button>
         </td>
     </tr>
   )

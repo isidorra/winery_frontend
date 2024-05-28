@@ -51,7 +51,7 @@ const ProductionSchedule = () => {
                     />
                 </div>
                 <br></br>
-                <Link to="/create-fermentation" className="button">Go to Create Fermentation</Link>
+                <Link to="/create-fermentation" className="button">Schedlue activity</Link>
                 </div>
             </div>
         </div>

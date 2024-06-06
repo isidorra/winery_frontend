@@ -1,0 +1,17 @@
+.pdf-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #004d99; /* Dark blue background color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
+
+.pdf-button:hover {
+    background-color: #003366; /* Darker blue on hover */
+}

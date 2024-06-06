@@ -1,0 +1,15 @@
+/* FermentationForm.css */
+
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group .MuiTextField-root {
+    width: 100%;
+  }
+  
